@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body class="container mt-4">
+
+    <div class="row">
+        <header class="col-md-3">
+          <%- include('../partials/sidebar'); %>
+        </header>
+          
+        <main class="col-md-9">
+            <h2 class="mb-4">Store Inventory</h2>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date Created</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Regular Price</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Total Sales</th>
+                    <th scope="col">Stock Quantity</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% for(let i = 0; i < products.length; i++){%>
+                        <tr>
+                            <th scope="row"><%= i+1 %></th>
+                            <td><img src="<%= products[i].images[0].src %>" alt="<%= products[i].images[0].alt %>" style="width: 100px; height: 100px; object-fit: contain;"></td>
+                            <td><%= products[i].name %></td>
+                            <td><%= products[i].date_created.split('T')[0] %></td>   
+                            <td><%= products[i].type %></td>
+                            <td><%= products[i].status %></td> 
+                            <td>$<%= products[i].regular_price %></td> 
+                            <td>$<%= products[i].price %></td> 
+                            <td><%= products[i].total_sales %></td> 
+                            <td class="<%= products[i].stock_quantity <= products[i].low_stock_amount ? 'bg-danger text-white' : 'bg-success text-white' %>">
+                                <%= products[i].stock_quantity %>
+                            </td>               
+                        </tr>
+                    <%}%>
+                </tbody>
+              </table>
+        </main>
+    </div>
+</body>
+</html>

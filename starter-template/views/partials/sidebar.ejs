@@ -1,0 +1,23 @@
+<nav class="d-md-block bg-light sidebar collapse">
+  <div class="position-sticky">
+    <ul class="nav flex-column border">
+      <li class="border-bottom <%= currentPage === '/' ? 'bg-primary' : '' %>">
+        <a class="nav-link <%= currentPage === '/' ? 'text-white' : '' %>" href="/">
+          Inventory
+        </a>
+      </li>
+
+      <li class="border-bottom <%= currentPage === '/sales' ? 'bg-primary' : '' %>">
+        <a class="nav-link <%= currentPage === '/sales' ? 'text-white' : '' %>" href="/sales">
+          Sales
+        </a>
+      </li>
+
+      <li class="border-bottom <%= currentPage === '/orders' ? 'bg-primary' : '' %>">
+        <a class="nav-link <%= currentPage === '/orders' ? 'text-white' : '' %>" href="/orders">
+          Orders
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

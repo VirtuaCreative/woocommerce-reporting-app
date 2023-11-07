@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body class="container mt-4">
+
+    <div class="row">
+        <header class="col-md-3">
+          <%- include('../partials/sidebar'); %>
+        </header>
+          
+        <main class="col-md-9">
+            <h2 class="mb-4">Monthly Sales Report</h2>
+            <div class="d-flex justify-content-between">
+                <div class="card" style="width: 12rem;">
+                    <div class="card-body text-center">
+                        <h1 class="font-weight-bold">$<%= sales[0].total_sales %></h1>
+                        <p class="card-text small">Sales</p>
+                    </div>
+                </div>
+
+                <div class="card" style="width: 12rem;">
+                    <div class="card-body text-center">
+                        <h1 class="font-weight-bold"><%= sales[0].total_orders %></h1>
+                        <p class="card-text small">Orders</p>
+                    </div>
+                </div>
+
+                <div class="card" style="width: 12rem;">
+                    <div class="card-body text-center">
+                        <h1 class="font-weight-bold"><%= sales[0].total_items %></h1>
+                        <p class="card-text small">Items Sold</p>
+                    </div>
+                </div>
+
+                <div class="card" style="width: 12rem;">
+                    <div class="card-body text-center">
+                        <h1 class="font-weight-bold">$<%= sales[0].total_refunds %></h1>
+                        <p class="card-text small">Refunds</p>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table mt-4">
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Sales</th>
+                    <th scope="col">Orders</th>
+                    <th scope="col">Items Sold</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% for(const date in sales[0].totals){%>
+                        <tr>
+                            <td scope="row"><%= date %></td>     
+                            <td scope="row">$<%= sales[0].totals[date].sales %></td> 
+                            <td scope="row"><%= sales[0].totals[date].orders %></td> 
+                            <td scope="row"><%= sales[0].totals[date].items %></td>   
+                        </tr>
+                    <%}%>
+                </tbody>
+              </table>
+        </main>
+    </div>
+
+</body>
+</html>

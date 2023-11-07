@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body class="container mt-4">
+
+    <div class="row">
+        <header class="col-md-3">
+          <%- include('../partials/sidebar'); %>
+        </header>
+          
+        <main class="col-md-9">
+            <h2 class="mb-4">Orders</h2>
+
+            <table class="table mt-4">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Customer</th>
+                  <th scope="col">Currency</th>
+                  <th scope="col">No. of Items</th>
+                  <th scope="col">Created On</th>
+                  <th scope="col">Discount</th>
+                  <th scope="col">Shipping Fee</th>
+                  <th scope="col">Cart Total</th>
+                  <th scope="col">Payment Method</th>
+                  <th scope="col">Status</th>
+              </tr>
+              </thead>
+              <tbody>
+                <% orders.forEach(function(order, index) { %>
+                  <tr>
+                      <td scope="row"><%= index + 1 %></td>
+                      <td scope="row"><%= order.billing.first_name + ' ' + order.billing.last_name %></td> 
+                      <td scope="row"><%= order.currency %></td>
+                      <td scope="row"><%= order.line_items.reduce((sum, item) => sum + item.quantity, 0) %></td>  
+                      <td scope="row"><%= order.date_created.split('T')[0] %></td>  
+                      <td scope="row">$<%= order.discount_total %></td>
+                      <td scope="row">$<%= order.shipping_total %></td>
+                      <td scope="row">$<%= order.total %></td>
+                      <td scope="row"><%= order.payment_method_title %></td>
+                      <td scope="row"><%= order.status %></td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+        </main>
+    </div>
+
+</body>
+</html>
